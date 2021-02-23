@@ -34,7 +34,7 @@
               :autoplay="4000"
               style="height: 140px;position: relative;top: 52px;">
               <van-swipe-item v-for="(item, i) of booksDeta" :key="i">
-                <img v-lazy="item.body_imgb" style="width:100%;height:140px" />
+                <img v-lazy="item.body_imgb" style="height:140px" />
               </van-swipe-item>
             </van-swipe>
           </div>
@@ -67,8 +67,7 @@
 </van-row> </div>
 <!-- 导航 -->
 
-<!-- 广告内容 -->
-       
+<!-- 资讯内容 -->   
 <div style="height: 80px; position:relative; top:38px;margin-top: 5px;">
 <van-row>
   <van-col span="6">
@@ -88,12 +87,30 @@
 </van-notice-bar>
   </van-col>
 </van-row>
-<!-- 广告内容 -->0
- 
+<!-- 资讯内容 -->
 </div>
-
+<!-- 广告轮播 -->
+<div  > 
+<van-swipe :autoplay="3000" style="position: initial;" id="indicators" >
+  <van-swipe-item v-for="(image, index) in  books_images" :key="index">
+     <router-link to=""><img v-lazy="image" style="width:100%;" /></router-link>
+  </van-swipe-item>
+</van-swipe>
+ </div>
+<!-- 广告轮播 -->
         </mt-tab-container-item>
       </mt-tab-container>
+      <div  class="books_subhead">
+ <span style="margin-left:10px;">今日值得买</span> 
+  <router-link to="">更多»</router-link>
+</div>
+
+<div>
+
+
+
+</div>
+      
     </div>
     <!-- 面板区域结束 -->
 
@@ -190,6 +207,12 @@ export default {
     return {
       booksTab: "home",
       booksDeta: [],
+      books_images:[
+        'http://image31.bookschina.com/pro-images/spic/fzp700185.jpg',
+        'http://image31.bookschina.com/pro-images/201230bg/700185.jpg?=2',
+        'http://image31.bookschina.com/pro-images/201230wz/700185.jpg?=2'
+      ],
+      booksimg:[]
      
     };
   },
@@ -206,6 +229,9 @@ export default {
       let results = res.data.results;
       this.booksDeta = results;
     });
+     this.axios.get("/img").then(res => {
+let results = res.data.results;
+this.booksimg= results;})
   }
 };
 </script>
@@ -306,7 +332,7 @@ padding-bottom:2px;
 }
 /* 导航 */
 
-/* 广告 */
+/* 资讯 */
 
 .ellipsis{
 color: #000;
@@ -315,10 +341,37 @@ text-overflow: ellipsis;
 white-space: nowrap;
 
 }
-
 .notice-swipe  a{
 color:#000;
 }
-/* 广告 */
+/* 资讯 */
+
+/* 副标题 */
+.books_subhead{
+  height:40px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #F9BD00;
+   margin-top: 8px;
+}
+.books_subhead span,a{
+  color: #FFF;
+}
+
+.books_subhead a{
+margin-right:10px;
+border: 1px solid #fff;
+border-radius: 0.5rem;
+ padding: 5px 10px;
+ font-size: 0.5rem;
+ line-height: 0.28rem;
+ overflow: hidden;
+
+}
+/* 副标题 */
+
+
+
 
 </style>
