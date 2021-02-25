@@ -149,11 +149,22 @@
       <div>
 
 <van-grid :border="false" :column-num="3">
-  <van-grid-item  v-for="(item,i) of booksimg" :key='i' >
+  <van-grid-item  v-for="(item,i) of booksimg.slice(0,6)" :key='i' >
+    <router-link to="">
     <van-image :src=item.img_imgs style="width:100%" />
-  <van-grid-item>{{}}</van-grid-item>
+  <van-grid-item style="color:#000;font-size:0.9rem" class="basis">{{item.img_subhead}}</van-grid-item>
+  <van-grid-item style="color:red;padding:0;" class="books_font">
+    ￥{{item.img_pric}}
+  <!-- ￥{{((5-10)*Math.random() + 10).toFixed(2)}}  -->
+   <s style="color:#999999">￥{{((55-50)*Math.random() + 50).toFixed(2)}} </s>
+  </van-grid-item>
+  </router-link>
   </van-grid-item>
 </van-grid>
+<div> 
+<router-link to="">
+  <img src="" alt="http://image31.bookschina.com/pro-images/sbanner/700185.jpg?id=2" style="width:100%;">
+</router-link></div>
 
 
       </div>
@@ -279,18 +290,22 @@ export default {
   mounted() {
 
     
+
+
+    
     this.axios.get("/body").then((res) => {
       let results = res.data.results;
       this.booksDeta = results;
     });
+
     this.axios.get("/img").then((res) => {
       let results = res.data.results;
       this.booksimg = results;
-      console.log(this.booksimg)
-  let [{img_subhead},{img_imgs},{img_pric}]=this.booksimg;
-  let img_subhead=[];
 
-for (let index = 0; index < img_subhead.length; index++) {
+      console.log(this.booksimg)
+  let [{img_glid},{img_subhead},{img_imgs},{img_pric}]=this.booksimg;
+ let glid=img_glid
+
   let subhead=img_subhead;
  console.log(img_subhead);
   let [bh,bb]=subhead.split('/');
@@ -298,12 +313,12 @@ for (let index = 0; index < img_subhead.length; index++) {
   //  console.log(bb);
 
   
-}
+
+  
+
 
 
  
- 
-
 
 
     });
@@ -441,4 +456,16 @@ a {
   overflow: hidden;
 }
 /* 副标题 */
+.basis div{
+  padding: 10px;
+}
+.books_font{
+  font-size: 1rem;
+}
+
+.books_font div{
+height: 20px;
+display: contents;
+}
+
 </style>
