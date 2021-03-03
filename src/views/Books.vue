@@ -130,11 +130,14 @@
             <van-swipe
               :autoplay="3000"
               style="position: initial"
-              id="indicators">
+              id="indicators"
+            >
               <van-swipe-item
                 v-for="(image, index) in books_images"
-                :key="index">
-                <router-link to=""><img v-lazy="image" style="width: 100%"
+                :key="index"
+              >
+                <router-link to=""
+                  ><img v-lazy="image" style="width: 100%"
                 /></router-link>
               </van-swipe-item>
             </van-swipe>
@@ -147,57 +150,122 @@
         <router-link to="">更多»</router-link>
       </div>
       <div>
+        <van-grid :border="false" :column-num="3">
+          <van-grid-item v-for="(item, i) of booksimg.slice(0, 6)" :key="i">
+            <router-link to="">
+              <van-image :src="item.img_imgs" style="width: 100%" />
+              <van-grid-item
+                style="color: #000; font-size: 0.9rem"
+                class="basis">
+                {{ item.img_subhead.slice(0, 5) }}…</van-grid-item>
+              <van-grid-item style="color: red; padding: 0" class="books_font">
+                ￥{{ item.img_pric }}
+                <!-- ￥{{((5-10)*Math.random() + 10).toFixed(2)}}  -->
+                <s style="color: #999999"
+                  >￥{{ ((55 - 50) * Math.random() + 50).toFixed(2) }}
+                </s>
+              </van-grid-item>
+            </router-link>
+          </van-grid-item>
+        </van-grid>
+        <div class="bookAgent">
+          <router-link to="">
+            <img
+              src="http://image31.bookschina.com/pro-images/sbanner/700185.jpg?id=2"
+              alt=""
+              style="width: 100%"/>
+          </router-link>
+        </div>
 
-<van-grid :border="false" :column-num="3">
-  <van-grid-item  v-for="(item,i) of booksimg.slice(0,6)" :key='i' >
-    <router-link to="">
-    <van-image :src=item.img_imgs style="width:100%" />
-  <van-grid-item style="color:#000;font-size:0.9rem;" class="basis">
-  {{item.img_subhead.slice(0,5)}}…</van-grid-item>
-  <van-grid-item style="color:red;padding:0;" class="books_font">
-    ￥{{item.img_pric}}
-  <!-- ￥{{((5-10)*Math.random() + 10).toFixed(2)}}  -->
-   <s style="color:#999999">￥{{((55-50)*Math.random() + 50).toFixed(2)}} </s>
-  </van-grid-item>
-  </router-link>
-  </van-grid-item>
-</van-grid>
-    <div class="bookAgent">   
-<router-link to="" >
-  <img src="http://image31.bookschina.com/pro-images/sbanner/700185.jpg?id=2" alt="" style="width:100%;">
-</router-link></div>
+        <div
+          style="height: 40px; display: flex; justify-content: space-between"
+          class="dumpling">
+          <span>
+            <img
+              src="../assets/img/bookmark.png"
+              style="height: 30px; vertical-align: middle; margin-top: 5px"
+              alt=""/> </span
+          ><router-link to="">更多»</router-link>
+        </div>
 
-<div style="height: 30px; background-color:FFFFFF;" class="books_subhead"><span>
- <img src="../assets/img/bookmark.png" style="width: 138px;height: 30px;"  alt="" />
- </span><router-link to="">更多»</router-link>
- </div>
+        <div>
+          <van-grid :border="false" :column-num="2">
+            <van-grid-item v-for="(item, i) of booksgroup.slice(0, 6)" :key="i">
+              <router-link to="">        
+                  <van-image :src="item.group_imges_01" style="width: 100%" />
+                <van-grid-item
+                  style="color: #000; font-size: 0.9rem; line-height: 18px"
+                  class="pling">
+                  {{ item.group_minut.slice(0, 30) }}…
+                </van-grid-item>
+                <van-grid-item
+                  style="color: red; font-size: 0.8rem; display: flex"
+                  class="books_save">
+                  团购价格:￥{{ item.group_save }}</van-grid-item>
+                <van-grid-item
+                  style="
+                    color: #999;
+                    padding: 0;
+                    display: flex;
+                    justify-content: space-between;"
+                  class="books_font">
+                  <s style="font-size: 0.85rem">原价￥{{ item.group_original }}
+                  </s>
+                  <span class="discount">
+                    <router-link to="">{{item.group_discount}}</router-link></span>
+                </van-grid-item>
+              </router-link>
+            </van-grid-item>
+          </van-grid>
+        </div>
+        <div style="height:40px;" class="dumpling">
+          <h3>
+            <img
+              src="../assets/img/books_buzz.png"
+              style="height: 30px; margin-top: 5px;"
+              alt=""/> </h3>
+        </div>
+        <div>
+          <div v-for="(item, i) of booksdeta.slice(0,1)" :key="i" style="display: flex;">
+            <div>
+              <router-link to="">
+            <van-image :src="item.deta_deimg" style="width:132px;height:132px;" />
+           </router-link>  
+            </div>
+         
+           <div style="display: flex;justify-content: left;">  
+            <p>{{item.deta_title}}</p> 
+           <div>评论</div>
+   <div>￥{{ item.deta_price }}</div>
+   <div></div>
 
- <div>
-<van-grid :border="false" :column-num="3">
-  <van-grid-item  v-for="(item,i) of booksgroup.slice(0,6)" :key='i' >
-    <router-link to="">
-    <van-image :src=item.group_imges style="width:100%" />
-  <van-grid-item style="color:#000;font-size:0.9rem;" class="basis">
-  {{item.group_minut[0]}}…</van-grid-item>
-  <van-grid-item style="color:red;padding:0;" class="books_font">
-    ￥{{item.group_original}}
-  <!-- ￥{{((5-10)*Math.random() + 10).toFixed(2)}}  -->
-   <s style="color:#999999">￥{{((55-50)*Math.random() + 50).toFixed(2)}} </s>
-  </van-grid-item>
-  </router-link>
-  </van-grid-item>
-</van-grid>
+           </div>
 
- </div>
 
+          </div>
+
+
+          <van-grid :border="false" :column-num="2">
+          <van-grid-item v-for="(item, i) of booksdeta.slice(1,3)" :key="i">
+            <router-link to="">
+              <van-image :src="item.deta_deimg" style="width: 100%" />
+              <van-grid-item
+                style="color: #000; font-size: 0.9rem"
+                class="basis">
+                {{ item.deta_details.slice(0, 5) }}…</van-grid-item>
+              <van-grid-item style="color: red; padding: 0" class="books_font">
+                ￥{{ item.deta_price }}
+                <!-- ￥{{((5-10)*Math.random() + 10).toFixed(2)}}  -->
+                <s style="color: #999999"
+                  >￥{{ ((55 - 50) * Math.random() + 50).toFixed(2) }}
+                </s>
+              </van-grid-item>
+            </router-link>
+          </van-grid-item>
+        </van-grid></div>
+        
       </div>
-
-
     </div>
-  
-
-
-
     <!-- 面板区域结束 -->
 
     <!-- 底部选项卡开始 -->
@@ -287,7 +355,6 @@
 import { Swipe, SwipeItem } from "mint-ui";
 import "mint-ui/lib/style.css";
 
-
 export default {
   name: "Swiper",
   data() {
@@ -300,9 +367,8 @@ export default {
         "http://image31.bookschina.com/pro-images/201230wz/700185.jpg?=2",
       ],
       booksimg: [],
-      booksgroup:[],
-
-      
+      booksgroup: [],
+      booksdeta:[]
     };
   },
 
@@ -310,38 +376,43 @@ export default {
     "mt-swipe": Swipe,
     "mt-swipe-item": SwipeItem,
   },
-  computed: {
+  computed: {},
 
-
-  },
-
-
-  methods: {
-
-  },
-
+  methods: {},
 
   mounted() {
-
-    
 
     this.axios.get("/body").then((res) => {
       let results = res.data.results;
       this.booksDeta = results;
     });
-
     this.axios.get("/img").then((res) => {
       let results = res.data.results;
       this.booksimg = results;
       console.log(this.booksimg);
-    //  let [{img_glid},{img_subhead},{img_imgs},{img_pric}]=this.booksimg;
     });
-     this.axios.get("/group").then((res) => {
+    this.axios.get("/group").then((res) => {
       let results = res.data.results;
       this.booksgroup = results;
       console.log(this.booksgroup);
-    //  let [{img_glid},{img_subhead},{img_imgs},{img_pric}]=this.booksimg;
     });
+     this.axios.get("/deta").then((res) => {
+      let results = res.data.results;
+      this.booksdeta= results;
+      console.log(this.booksdeta);
+    });
+
+
+
+// student.prototype.Axios=function(group){
+//   this.axios.get(group).then((res) => {
+//       let results = res.data.results;
+//       this.booksgroup = results;
+//       console.log(this.booksgroup);
+//     });
+// }
+// let group=new student('/group');
+// group.Axios();
 
 
   },
@@ -478,20 +549,43 @@ a {
   overflow: hidden;
 }
 /* 副标题 */
-.basis div{
-  
+.basis div {
   padding: 10px;
- 
 }
 
-
-.books_font{
+.books_font {
   font-size: 1rem;
 }
 
-.books_font div{
-height: 20px;
-display: contents;
+.books_font div {
+  height: 20px;
+  display: contents;
 }
-
+.dumpling a {
+  color: #666;
+  border: 1px solid #666;
+  border-radius: 0.8rem;
+  padding: 2px 10px;
+  font-size: 0.5rem;
+  height: 16px;
+  margin: 10px 10px;
+}
+.pling ::before {
+  content: "团";
+  background-color: #e60000;
+  color: #fff;
+}
+.pling > div {
+  display: contents;
+}
+.books_save > div {
+  padding: 10px 0px;
+}
+.discount {
+  color: #fff;
+  background-color: #efb64d;
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
+  font-size: 16px;
+  margin-left: 10px;
+}
 </style>
