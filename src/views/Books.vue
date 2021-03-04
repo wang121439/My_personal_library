@@ -82,8 +82,7 @@
 
           <!-- 资讯内容 -->
           <div
-            style="height: 80px; position: relative; top: 38px; margin-top: 5px"
-          >
+            style="height: 80px; position: relative; top: 38px; margin-top: 5px">
             <van-row>
               <van-col span="6">
                 <img
@@ -96,29 +95,20 @@
                 <van-notice-bar
                   left-icon="volume-o"
                   :scrollable="false"
-                  style="color: red; background-color: #fff; right: 24px"
-                >
+                  style="color: red; background-color: #fff; right: 24px">
                   <van-swipe
                     vertical
                     class="notice-swipe"
                     :autoplay="3000"
-                    :show-indicators="false"
-                  >
+                    :show-indicators="false">
                     <van-swipe-item class="ellipsis">
                       <router-link to="#"
-                        >辛丑年新春书市|每满79减30（附送手帐本1个）</router-link
-                      >
+                        >辛丑年新春书市|每满79减30（附送手帐本1个）</router-link>
                     </van-swipe-item>
                     <van-swipe-item class="ellipsis">
-                      <router-link to="#"
-                        >疫情期间发货公告</router-link
-                      ></van-swipe-item
-                    >
+                      <router-link to="#">疫情期间发货公告</router-link></van-swipe-item>
                     <van-swipe-item class="ellipsis">
-                      <router-link to="#"
-                        >新用户注册即送10元!</router-link
-                      ></van-swipe-item
-                    >
+                      <router-link to="#">新用户注册即送10元!</router-link></van-swipe-item>
                   </van-swipe>
                 </van-notice-bar>
               </van-col>
@@ -231,20 +221,13 @@
               <router-link to="">
             <van-image :src="item.deta_deimg" style="width:132px;height:132px;" />
            </router-link>  
-            </div>
-         
-           <div style="display: flex;justify-content: left;">  
-            <p>{{item.deta_title}}</p> 
-           <div>评论</div>
-   <div>￥{{ item.deta_price }}</div>
-   <div></div>
+            </div> 
 
+           <div>  
+        
            </div>
 
-
           </div>
-
-
           <van-grid :border="false" :column-num="2">
           <van-grid-item v-for="(item, i) of booksdeta.slice(1,3)" :key="i">
             <router-link to="">
@@ -263,41 +246,117 @@
             </router-link>
           </van-grid-item>
         </van-grid></div>
-        
+
+        <div style="height: 40px;background-color: #efbf41;
+      position: relative;display: flex;align-items: center;justify-content: center;">
+             <router-link to="" style=" color: #5f1a1a;">查看五星书>> </router-link>
+           </div>
+            <div >
+          <h3 style="height:40px;padding: 5px 0px;" class="dumpling">
+            <img
+              src="../assets/img/books_recommend.png"
+              style="height: 30px; margin: 5px 0px;"
+              alt=""/> </h3>
+        </div>
+        <div v-for="(item,i) in recommendImg" :key="i" style="">
+          <img :src=item.recommend alt="" style="width:48%;height:50%;float: left;margin: 3px;"/>
+        </div>
+          <div>
+            <img
+              src="../assets/img/books_newbooks.png"
+              style="height: 30px; margin: 5px 0px;"
+              alt=""/> 
+        </div>
+        <div >
+          <van-grid :border="false" :column-num="3">
+          <van-grid-item v-for="(item, i) of booksImgp.slice(3,6)" :key="i">
+            <router-link to="">
+              <van-image :src="item.imgp_imgp" style="width: 100%" />
+              <van-grid-item
+                style="color: #000; font-size: 0.9rem"
+                class="basis">
+                {{ item.imgp_name.slice(0, 5) }}…</van-grid-item>
+              <van-grid-item style="color: red; padding: 0" class="books_font">
+                ￥{{ item.imgp_pric }}
+                <!-- ￥{{((5-10)*Math.random() + 10).toFixed(2)}}  -->
+                <s style="color: #999999"
+                  >￥{{ ((55 - 40) * Math.random() + 40).toFixed(2) }}
+                </s>
+              </van-grid-item>
+            </router-link>
+          </van-grid-item>
+        </van-grid>
+        </div>
+        <div style="display: flex;justify-content: center;margin: 5px 0px;">
+         <img src="../assets/img/books_parting.png" alt="" style="width: 150px;height: 40px;"/>
+        </div>
+        <div style="position: relative;top: 0px;" >
+          <van-sticky >
+ <van-tabs animated >
+  
+  <van-tab title="总榜" ><router-link to=""> 
+    
+    <van-grid :border="false" :column-num="2">
+          <van-grid-item v-for="(item, i) of booksImgp.slice(0,50)" :key="i">
+            <router-link to="">
+              <van-image :src="item.imgp_imgp" style="width: 100%" />  
+              <van-grid-item
+                style="color: #000; font-size: 0.9rem"
+                class="basis">
+                {{ item.imgp_name.slice(0, 5) }}…</van-grid-item>
+              <van-grid-item style="color: red; padding: 0" class="books_font">
+                ￥{{ item.imgp_pric }}
+                <!-- ￥{{((5-10)*Math.random() + 10).toFixed(2)}}  -->
+                <s style="color: #999999"
+                  >￥{{ ((55 - 40) * Math.random() + 40).toFixed(2) }}
+                </s>
+              </van-grid-item>
+            </router-link>
+          </van-grid-item>
+        </van-grid>
+    </router-link></van-tab>
+  <van-tab title="文学" > <router-link to=""></router-link> 内容 2</van-tab>
+  <van-tab title="社科" > <router-link to=""></router-link> 内容 3</van-tab>
+  <van-tab title="少儿" > <router-link to=""></router-link> 内容 4</van-tab>
+  <van-tab title="艺术" > <router-link to=""></router-link> 内容 5</van-tab>
+  <van-tab title="生活" > <router-link to=""></router-link> 内容 6</van-tab>
+  <van-tab title="文教" > <router-link to=""></router-link> 内容 7</van-tab>
+</van-tabs></van-sticky>
+
+        </div>
+          <div style="height:48px;background-color:#F3F3F3;
+      position: relative;display: flex;align-items: center;justify-content: center;">
+             <router-link to="" style=" color: #5f1a1a;">进入畅销榜 >> </router-link>
+           </div>
       </div>
     </div>
     <!-- 面板区域结束 -->
 
     <!-- 底部选项卡开始 -->
-    <mt-tabbar v-model="booksTab" fixed class="booksTab">
+    <mt-tabbar v-model="booksTab" fixed style="z-index: 100;" >
       <mt-tab-item id="home" href="/">
         <img
           src="../assets/img/base/home_enable.png"
           slot="icon"
           alt=""
-          v-if="booksTab == 'home'"
-        />
+          v-if="booksTab == 'home'"/>
         <img
           src="../assets/img/base/home_disable.png"
           slot="icon"
           alt=""
-          v-else
-        />
-        <b>首页</b></mt-tab-item
-      >
+          v-else/>
+        <b>首页</b></mt-tab-item>
       <mt-tab-item id="classify" href="/classify">
         <img
           src="../assets/img/base/classify_enable.png"
           slot="icon"
           alt=""
-          v-if="booksTab == 'classify'"
-        />
+          v-if="booksTab == 'classify'"/>
         <img
           src="../assets/img/base/classify_disable.png"
           slot="icon"
           alt=""
-          v-else
-        />
+          v-else/>
         <b>分类</b>
       </mt-tab-item>
       <mt-tab-item id="service" href="#">
@@ -328,9 +387,7 @@
           alt=""
           v-else
         />
-        <b>购物车</b></mt-tab-item
-      >
-
+        <b>购物车</b></mt-tab-item>
       <mt-tab-item id="my" href="/login">
         <img
           src="../assets/img/base/my_enable.png"
@@ -354,6 +411,7 @@
 <script>
 import { Swipe, SwipeItem } from "mint-ui";
 import "mint-ui/lib/style.css";
+import {VanCard} from "vant"
 
 export default {
   name: "Swiper",
@@ -368,13 +426,23 @@ export default {
       ],
       booksimg: [],
       booksgroup: [],
-      booksdeta:[]
+      booksdeta:[],
+      recommendImg:[
+        {recommend:'http://image31.bookschina.com/pro-images/sbanner/305417.jpg'},
+        {recommend:'http://image31.bookschina.com/pro-images/sbanner/305197.jpg'},
+        {recommend:'http://image31.bookschina.com/pro-images/spic/wc305212.jpg?id=2'}
+      ],
+      booksImgp:[],
+      
+    
     };
   },
 
   components: {
     "mt-swipe": Swipe,
     "mt-swipe-item": SwipeItem,
+    'van-card':VanCard,
+    
   },
   computed: {},
 
@@ -401,20 +469,11 @@ export default {
       this.booksdeta= results;
       console.log(this.booksdeta);
     });
-
-
-
-// student.prototype.Axios=function(group){
-//   this.axios.get(group).then((res) => {
-//       let results = res.data.results;
-//       this.booksgroup = results;
-//       console.log(this.booksgroup);
-//     });
-// }
-// let group=new student('/group');
-// group.Axios();
-
-
+    this.axios.get("/imgp").then((res) => {
+      let results = res.data.results;
+      this.booksImgp= results;
+      console.log(this.booksImgp);
+    });
   },
 };
 </script>
@@ -587,5 +646,22 @@ a {
   border-radius: 0.5rem 0rem 0rem 0.5rem;
   font-size: 16px;
   margin-left: 10px;
+}
+.van-tabs__line{
+  width: 69px !important;
+  top:0px  !important;
+  bottom: 0px !important;
+  
+}
+.van-tab--active{
+  color: #EE0A24 !important;
+}
+.van-tabs--line .van-tabs__wrap {
+    height: 52px !important;
+}
+.van-tabs__wrap--scrollable .van-tab {
+    border-right: solid #e8dede 0.06rem !important;
+    border-bottom: solid #e8dede 0.06rem !important;
+    padding: 0px 20px !important;
 }
 </style>

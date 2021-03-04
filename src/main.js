@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import qs from 'qs'
+
 // import {Swipe, SwipeItem} from 'mint-ui'
 import { Search } from 'mint-ui';
 Vue.component(Search.name, Search);
@@ -25,6 +26,7 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 //将VanUI注册为vue插件
 Vue.use(Vant);
+
 
 // Vue.component(Swipe.name,Swipe);
 // Vue.component(SwipeItem.name,SwipeItem)
