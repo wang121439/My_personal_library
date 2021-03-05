@@ -32,51 +32,22 @@
           <div>
             <van-swipe
               :autoplay="4000"
-              style="height: 140px; position: relative; top: 52px"
-            >
+              style="height: 140px; position: relative; top: 52px">
               <van-swipe-item v-for="(item, i) of booksDeta" :key="i">
-                <img v-lazy="item.body_imgb" style="height: 140px" />
+                <img v-lazy="item.body_imgb" style="height: 100%;max-width: 100%;" />
               </van-swipe-item>
             </van-swipe>
           </div>
           <!-- 轮播图 -->
           <!-- 导航 -->
           <div class="booksRow">
-            <van-row type="flex" justify="space-around">
-              <van-col span="4">
+           <van-row type="flex" justify="space-around">
+          <van-col span="4"  v-for="(item,index) in navigation" :key="index">
                 <router-link to="#">
-                  <img src="../assets/img/page/books_active.png" alt="畅销榜" />
-                  <b>畅销榜</b>
+                  <img :src="item.navigImg" alt="畅销榜" />
+                  <b>{{item.name}}</b>
                 </router-link>
-              </van-col>
-              <van-col span="4">
-                <router-link to="#">
-                  <img src="../assets/img/page/books_weed.png" alt="淘书团" />
-                  <b>淘书团</b></router-link
-                ></van-col
-              >
-              <van-col span="4">
-                <router-link to="#">
-                  <img src="../assets/img/page/books_mail.png" alt="9.9包邮" />
-                  <b>9.9包邮</b></router-link
-                ></van-col
-              >
-              <van-col span="4">
-                <router-link to="#">
-                  <img src="../assets/img/page/books_new.png" alt="新上架" />
-                  <b>新上架</b></router-link
-                ></van-col
-              >
-              <van-col span="4">
-                <router-link to="#">
-                  <img
-                    src="../assets/img/page/books_publish.png"
-                    alt="出版社"
-                  />
-                  <b>出版社</b></router-link
-                ></van-col
-              >
-            </van-row>
+              </van-col></van-row>
           </div>
           <!-- 导航 -->
 
@@ -293,11 +264,9 @@
         <div style="position: relative;top: 0px;" >
           <van-sticky >
  <van-tabs animated >
-  
   <van-tab title="总榜" ><router-link to=""> 
-    
     <van-grid :border="false" :column-num="2">
-          <van-grid-item v-for="(item, i) of booksImgp.slice(0,50)" :key="i">
+          <van-grid-item v-for="(item, i) of booksImgp.slice(0,12)" :key="i">
             <router-link to="">
               <van-image :src="item.imgp_imgp" style="width: 100%" />  
               <van-grid-item
@@ -324,11 +293,34 @@
 </van-tabs></van-sticky>
 
         </div>
+      </div>
+
+       <div style="position: relative;
+    z-index: 99;"> 
           <div style="height:48px;background-color:#F3F3F3;
       position: relative;display: flex;align-items: center;justify-content: center;">
-             <router-link to="" style=" color: #5f1a1a;">进入畅销榜 >> </router-link>
+             <router-link to="" style=" color: #969799;">进入畅销榜 >> </router-link>
            </div>
-      </div>
+           <div style="height:69px;display: flex;
+    justify-content: space-evenly;" >
+             <van-button  style="width:50px;"  url="/vant/mobile.html">登陆</van-button>
+              <van-button style="width:50px;"   to="index">注册</van-button>
+           </div>
+           <div style="height:36px;display: flex;
+    justify-content: space-evenly;">
+           <router-link to="" style="color:#646566;" >触屏版</router-link>
+           <router-link to="" style="color:#646566;" >电脑版</router-link>
+           <router-link to="" style="color:#646566;" >帮助</router-link>
+           </div>
+           <div style="
+    height: 95px;
+    display: flex;
+    color: #969799;
+    justify-content: center;
+    font-size: 0.88rem;">
+             Copyright 懒人书柜网©2018 m.wbookfair.com
+           </div></div>
+
     </div>
     <!-- 面板区域结束 -->
 
@@ -433,8 +425,13 @@ export default {
         {recommend:'http://image31.bookschina.com/pro-images/spic/wc305212.jpg?id=2'}
       ],
       booksImgp:[],
-      
-    
+      navigation:[
+        {navigImg:require('../assets/img/page/books_active.png'),name:'畅销榜'},
+        {navigImg:require('../assets/img/page/books_weed.png'),name:'淘书团'},
+        {navigImg:require('../assets/img/page/books_mail.png'),name:'9.9包邮'},
+        {navigImg:require('../assets/img/page/books_new.png'),name:'新上架'},
+        {navigImg:require('../assets/img/page/books_publish.png'),name:'出版社'},
+      ]
     };
   },
 
@@ -449,7 +446,7 @@ export default {
   methods: {},
 
   mounted() {
-
+   
     this.axios.get("/body").then((res) => {
       let results = res.data.results;
       this.booksDeta = results;
@@ -648,7 +645,7 @@ a {
   margin-left: 10px;
 }
 .van-tabs__line{
-  width: 69px !important;
+  width: 122px !important;
   top:0px  !important;
   bottom: 0px !important;
   
@@ -662,6 +659,13 @@ a {
 .van-tabs__wrap--scrollable .van-tab {
     border-right: solid #e8dede 0.06rem !important;
     border-bottom: solid #e8dede 0.06rem !important;
-    padding: 0px 20px !important;
+    padding: 0px 47px !important;
+}
+.van-button--normal {
+    padding: 0 !important;
+}
+.van-button--default {
+    color: #323233 !important;
+    background-color: #fff  !important;
 }
 </style>
